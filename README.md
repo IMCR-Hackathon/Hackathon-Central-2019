@@ -4,4 +4,4 @@ Command center for hackathon participants to [share ideas](https://github.com/IM
 
 Project repositories will be setup at the hackathon. 
 
-If you have questions or concerns, please contact Kristin Vanderbilt (kvanderbilt7@gmail.com) and Colin Smith (csmith.tar@gmail.com).
+If you have questions or concerns, please contact Kristin Vanderbilt (krvander@fiu.edu) and Colin Smith (csmith.tar@gmail.com).
