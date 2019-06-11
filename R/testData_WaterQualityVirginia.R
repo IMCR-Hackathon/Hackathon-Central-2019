@@ -1,4 +1,4 @@
-testData_JohnMessy <- function(localFile){
+testData_WaterQualityVirginia <- function(localFile){
 # Package ID: knb-lter-vcr.247.10 Cataloging System:https://pasta.edirepository.org.
 # Data set title: Water Quality Sampling - integrated measurements for the Virginia Coast, 1992-2018.
 # Data set creator: Dr. Karen McGlathery -  
