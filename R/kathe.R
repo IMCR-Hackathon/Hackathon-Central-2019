@@ -1,7 +1,7 @@
 localDir <- '~/Documents/GitHubRepo/Hackathon-Central-2019/temp/'
 
-SAV_NPP <- testData_SavilletaNPP(file.path(localDir, 'SAV_NPP.csv'))
-H2O_Qual <- testData_WaterQualityVirginia(file.path(localDir, 'H2O_Qual.csv'))
+SAV_NPP <- testData_SavilletaNPP(file.path(localDir, 'SAV_NPP.RData'))
+H2O_Qual <- testData_WaterQualityVirginia(file.path(localDir, 'H2O_Qual.RData'))
 
 library(tidyverse)
 numeric_sum <- SAV_NPP %>% 
