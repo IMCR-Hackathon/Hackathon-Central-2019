@@ -1,0 +1,8 @@
+#ignore temp Mac files
+*~
+
+#ignore R files
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
