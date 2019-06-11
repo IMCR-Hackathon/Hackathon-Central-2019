@@ -1,7 +1,7 @@
 testData_SavilletaNPP <- function(localFile){
   
   if(file.exists(localFile)){
-    return(read.csv(localFile))
+    return(load(localFile))
   }
 # Package ID: knb-lter-sev.289.239911 Cataloging System:https://pasta.lternet.edu.
 # Data set title: Core Site Grid Quadrat Data for the Net Primary Production Study at the Sevilleta National Wildlife Refuge, New Mexico (2013- present).
@@ -56,7 +56,7 @@ if (class(dt1$comment)!="factor") dt1$comment<- as.factor(dt1$comment)
 dt1$cover <- ifelse((trimws(as.character(dt1$cover))==trimws("-999")),NA,dt1$cover)
 dt1$height <- ifelse((trimws(as.character(dt1$height))==trimws(".")),NA,dt1$height)
 
-write.csv(file=localFile, dt1)
+save(file=localFile, dt1)
 
 return(dt1)
 }

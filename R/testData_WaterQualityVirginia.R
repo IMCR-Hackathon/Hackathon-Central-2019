@@ -9,7 +9,7 @@ testData_WaterQualityVirginia <- function(localFile){
 # Stylesheet v2.7 for metadata conversion into program: John H. Porter, Univ. Virginia, jporter@virginia.edu 
 
 if(file.exists(localFile)){
-  return(read.csv(localFile))
+  return(load(localFile))
 }
   
 infile1  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-vcr/247/10/ce44ee0ccaccf489f3ccb04d3cf85e39" 
@@ -255,7 +255,7 @@ if (class(dt1$COMMENTSEDCN)!="factor") dt1$COMMENTSEDCN<- as.factor(dt1$COMMENTS
                 
 dt1$SCTTEMP <- ifelse((trimws(as.character(dt1$SCTTEMP))==trimws("NA")),NA,dt1$SCTTEMP)
         
-write.csv(file=localFile, dt1)
+save(file=localFile, dt1)
 
 return(dt1)
 }
