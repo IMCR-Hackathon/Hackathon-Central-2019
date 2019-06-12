@@ -62,14 +62,6 @@ read_data_archived <- function(data.pkg.doi){
   )
   
   names(input) <- fname
-
-  # # Remove data and metadata directory ----------------------------------------
-  # 
-  # unlink(
-  #   paste0(tempdir(), '/data_package'),
-  #   recursive = TRUE,
-  #   force = TRUE
-  # )
   
   # Set class and add directory -----------------------------------------------
   
