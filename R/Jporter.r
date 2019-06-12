@@ -45,19 +45,68 @@ make_cat_variable_summary_df<-function(var){
   return(df)
 }
 
-make_numeric_histogram<-function(df,var){
+make_numeric_histogram<-function(df,var,varname){
   library(ggplot2)
-  varname=deparse(substitute(var))
+  #varname=deparse(substitute(var))
   x<-ggplot(df,aes(x=var))+ xlab(varname)+
   geom_histogram(aes(y=..density..), colour="black", fill="white")+
     geom_density(alpha=.2, fill="#FF6666") 
   return(x)
 }
 
-make_categorical_histogram<-function(df,var){
+make_categorical_histogram<-function(df,var,varname){
   library(ggplot2)
-  varname=deparse(substitute(var))
+  #varname=deparse(substitute(var))
   x<-ggplot(df,aes(x=var))+ xlab(varname)+
     geom_bar() 
   return(x)
+}
+
+# make_missing_plot<-function(var){
+#   library(inspectdf)
+#   df<-as.data.frame(var)
+#   x<-inspect_na(df)
+#   show_plot(x)
+# }
+
+make_missing_plot<-function(var){
+  library(ggplot2)
+  is_missing<-ifelse(is.na(var),0,1)
+  obs_number<-rownames(as.data.frame(is_missing))
+  is_missing_df<-data.frame(obs_number,is_missing)
+  x<-ggplot(is_missing_df,aes(obs_number,is_missing))+geom_col()+
+  theme(axis.text.x=element_blank(),
+         axis.ticks.x=element_blank())+ylab("Blank is Missing")
+  return(x)
+  }
+
+make_var_report<-function(df){
+  library(knitr)
+attach(df)
+for(varname in names(df)){
+  var<-get(varname)
+  if (is.numeric(var)){
+    print(paste('<a name="',varname[1],'">',sep=''))
+    print(varname[1])
+    print("</a>")
+     x<-make_numeric_variable_summary_df(var)
+     print(x)
+     #kable(x,format="pandoc")
+     x<-make_numeric_histogram(df,var)
+     print(x)
+  }
+  if(is.factor(var) | is_character(var)){
+    print(paste('<a name="',varname[1],'">',sep=''))
+    print(varname[1])
+    print("</a>")
+    x<-make_cat_variable_summary_df(var)
+    print(x)
+    #kable(x,format="pandoc")
+    x<-make_categorical_histogram(df,var,varname)
+    print(x)
+    
+  }
+}
+
+detach(df)
 }
