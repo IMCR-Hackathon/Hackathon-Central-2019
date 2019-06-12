@@ -5,6 +5,15 @@
 # 2.) Select and copy the data package DOI, which has the form:
 #     "doi:10.6073/pasta/7e48a6e1fb576a5be7b20ffbbaa10503"
 # 3.) Enter the DOI to the data.pkg.doi argument as a character string
+#
+# If you encounter the error "this directory already exists", then remove with
+# these lines of code:
+#
+# unlink(
+#   paste0(tempdir(), '/data_package'),
+#   recursive = TRUE,
+#   force = TRUE
+# )
 
 read_data_archived <- function(data.pkg.doi){
   
