@@ -1,5 +1,4 @@
-#Hackathon 6.12.2019, New Mexico
-#Environmental Data Iniative 
+#Hackathon 6.12.2019
 
 #Function code for summary table for general group
 
@@ -27,9 +26,10 @@ HackathonFunction<-function(data.df)  {
                 quantile_75 = quantile(value, 0.75, na.rm=TRUE),
                 max = max(value, na.rm=TRUE), 
                 mean = mean(value, na.rm=TRUE),
-                unique_count = length(unique(value)),
-                finite_count = sum(is.finite(value)),
-                count = length(value))
+                Unique_Values = length(unique(value)),
+                Total_Values = sum(is.finite(value)),
+                NAs= sum(is.na(value))
+                )
   
   return(SummaryTable)
   }
@@ -37,3 +37,4 @@ HackathonFunction<-function(data.df)  {
 SummaryTable <- HackathonFunction(data.df = workingTest$data)
 
 SummaryTable
+
