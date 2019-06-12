@@ -4,7 +4,7 @@
 # Install dependencies --------------------------------------------------------
 
 install.packages('remotes') # remotes allows you to install R packages from GitHub
-remotes::install_github('NCEAS/metajam') # metajam reads data packages from DataONE member repositories
+remotes::install_github('clnsmth/metajam') # metajam reads data packages from DataONE member repositories
 install.packages('testhat')
 
 # Load dependencies -----------------------------------------------------------
