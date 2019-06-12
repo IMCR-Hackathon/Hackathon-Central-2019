@@ -2,7 +2,7 @@
 
 #Function code for summary table for general group
 
-#code composed by Kathy Brown and expanded by Jocelyn Wardrup
+#code composed by Kathy Todd-Brown and expanded by Jocelyn Wardrup
 #summary table to utilize as future code for other datasets obtain a snapshot of data from various studies....
 
 
