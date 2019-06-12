@@ -26,9 +26,9 @@ data.pkg.doi <- 'doi:10.6073/pasta/9f2f89e48f9e943f7125d1a335d96eb0'
 # Non-problematic LTER daily stream water chemistry dataset:
 data.pkg.doi <- 'doi:10.6073/pasta/451553a669950425a96450f23bd09e07'
 
-#
-#
-data.pkg.doi <- ''
+# CoastalPlainSoils
+# Clean data table with code generation also
+data.pkg.doi <- 'doi:10.6073/pasta/3c10627e2344d74141b45e70a9144ccb'
 
 #
 #
