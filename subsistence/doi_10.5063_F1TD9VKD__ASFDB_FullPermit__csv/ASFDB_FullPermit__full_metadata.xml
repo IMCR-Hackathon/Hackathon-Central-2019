@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" packageId="doi:10.5063/F1TD9VKD" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 eml.xsd" system="https://arcticdata.io">
+  <dataset>
+    <title>Subsistence and personal use harvest of salmon in Alaska, 1960-2012</title>
+    <creator id="1485902463820">
+      <organizationName>Alaska Department of Fish and Game, Division of Subsistence</organizationName>
+    </creator>
+    <associatedParty>
+      <individualName>
+        <givenName>Stephanie</givenName>
+        <surName>Freund</surName>
+      </individualName>
+      <organizationName>National Center for Ecological Analysis and Synthesis</organizationName>
+      <role>Contributor</role>
+    </associatedParty>
+    <abstract>
+      <para>
+        Subsistence fishing is important for the economies and cultures of many families and communities in Alaska. Subsistence uses of wild resources exist alongside other important uses of fish and game in Alaska and are especially important for many rural families who depend on subsistence use for nutrition and traditional cultural practices. Subsistence use is defined as the noncommercial, customary harvest and processing of wild resources for food, raw materials, and other traditional uses. These customs have been a central part of the traditions of many cultural and tribal groups in Alaska for centuries. Today, subsistence and personal use fisheries are open only to Alaska residents that have been living in the state for at least one year. The Board of Fisheries (BOF) has the authority to adopt regulations governing the use of fish resources in Alaska. In order to regulate subsistence fisheries and ensure sustainability, the BOF is directed by Alaskan state law to identify fish stocks that are customarily and traditionally used for subsistence in Alaska. After customary and traditional use has been determined for a stock, the amount reasonably necessary for subsistence is set. Subsistence and personal use fisheries are managed under different regulations and thus regulations vary by fishery and location across the state. For example, only some fisheries require a permit issued by ADFG and some waters are closed to subsistence fishing, other fisheries have season, gear, and/or bag limit restrictions. Finfish other than salmon, rainbow trout, and steelhead trout may be taken for subsistence purposes at any time in any area of the state by any method unless restricted by the subsistence fishing regulations in the Alaska Admin Code. Salmon are more strictly regulated and the fisheries require permits, only allow certain gear types, and are restricted to certain waters in the state. 
+      </para>
+      <para>
+        This dataset includes information on subsistence salmon harvest from 1960-2012 across the entire state of Alaska. The csv file "ASFDB_FullPermit.csv" has been reformatted from the original excel file ("ASFDB_Full_PermitTypeDetail.xlsx"). This processing was done using the R Markdown file, "subsistence_harvest_processing.Rmd". Each entry is a report from a specific fishery and community in Alaska including permit type, resource type, year, and harvest (both reported and estimated). For each species, harvest data include both the number of fish and the edible weight in lbs (dressed, head off). See methods for additional data considerations.
+      </para>
+    </abstract>
+    <keywordSet>
+      <keyword>Subsistence</keyword>
+      <keyword>Salmon</keyword>
+      <keyword>Harvest</keyword>
+      <keyword>Alaska</keyword>
+    </keywordSet>
+    <keywordSet>
+      <keyword>Chinook</keyword>
+      <keyword>Chum</keyword>
+      <keyword>Pink</keyword>
+      <keyword>Coho</keyword>
+      <keyword>Sockeye</keyword>
+    </keywordSet>
+    <intellectualRights>
+      <para>ADF&amp;amp;G retains intellectual property rights to data collected by or for ADF&amp;amp;G. Any dissemination of the data must credit ADF&amp;amp;G as the source, with a disclaimer that exonerates the department for errors or deficiencies in reproduction, subsequent analysis, or interpretation. Please see http://www.adfg.alaska.gov/index.cfm?adfg=home.copyright for further information.</para>
+    </intellectualRights>
+    <coverage>
+      <geographicCoverage>
+        <geographicDescription>Alaska</geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>-172.125</westBoundingCoordinate>
+          <eastBoundingCoordinate>-141.375</eastBoundingCoordinate>
+          <northBoundingCoordinate>77.125</northBoundingCoordinate>
+          <southBoundingCoordinate>48.25</southBoundingCoordinate>
+        </boundingCoordinates>
+      </geographicCoverage>
+      <temporalCoverage>
+        <rangeOfDates>
+          <beginDate>
+            <calendarDate>1960</calendarDate>
+          </beginDate>
+          <endDate>
+            <calendarDate>2012</calendarDate>
+          </endDate>
+        </rangeOfDates>
+      </temporalCoverage>
+      <taxonomicCoverage>
+        <taxonomicClassification>
+          <taxonRankName>genus</taxonRankName>
+          <taxonRankValue>Oncorhynchus</taxonRankValue>
+          <taxonomicClassification>
+            <taxonRankName>species</taxonRankName>
+            <taxonRankValue>Oncorhynchus tshawytscha</taxonRankValue>
+            <taxonomicClassification>
+              <taxonRankName>common name</taxonRankName>
+              <taxonRankValue>chinook salmon</taxonRankValue>
+            </taxonomicClassification>
+          </taxonomicClassification>
+        </taxonomicClassification>
+        <taxonomicClassification>
+          <taxonRankName>genus</taxonRankName>
+          <taxonRankValue>Oncorhynchus</taxonRankValue>
+          <taxonomicClassification>
+            <taxonRankName>species</taxonRankName>
+            <taxonRankValue>Oncorhynchus keta</taxonRankValue>
+            <taxonomicClassification>
+              <taxonRankName>common name</taxonRankName>
+              <taxonRankValue>chum salmon</taxonRankValue>
+            </taxonomicClassification>
+          </taxonomicClassification>
+        </taxonomicClassification>
+        <taxonomicClassification>
+          <taxonRankName>genus</taxonRankName>
+          <taxonRankValue>Oncorhynchus</taxonRankValue>
+          <taxonomicClassification>
+            <taxonRankName>species</taxonRankName>
+            <taxonRankValue>Oncorhynchus kisutch</taxonRankValue>
+            <taxonomicClassification>
+              <taxonRankName>common name</taxonRankName>
+              <taxonRankValue>coho salmon</taxonRankValue>
+            </taxonomicClassification>
+          </taxonomicClassification>
+        </taxonomicClassification>
+        <taxonomicClassification>
+          <taxonRankName>genus</taxonRankName>
+          <taxonRankValue>Oncorhynchus</taxonRankValue>
+          <taxonomicClassification>
+            <taxonRankName>species</taxonRankName>
+            <taxonRankValue>Oncorhynchus gorbuscha</taxonRankValue>
+            <taxonomicClassification>
+              <taxonRankName>common name</taxonRankName>
+              <taxonRankValue>pink salmon</taxonRankValue>
+            </taxonomicClassification>
+          </taxonomicClassification>
+        </taxonomicClassification>
+        <taxonomicClassification>
+          <taxonRankName>genus</taxonRankName>
+          <taxonRankValue>Oncorhynchus</taxonRankValue>
+          <taxonomicClassification>
+            <taxonRankName>species</taxonRankName>
+            <taxonRankValue>Oncorhynchus nerka</taxonRankValue>
+            <taxonomicClassification>
+              <taxonRankName>common name</taxonRankName>
+              <taxonRankValue>sockeye salmon</taxonRankValue>
+            </taxonomicClassification>
+          </taxonomicClassification>
+        </taxonomicClassification>
+      </taxonomicCoverage>
+    </coverage>
+    <contact id="1485903214697">
+      <individualName>
+        <givenName>David</givenName>
+        <surName>Koster</surName>
+      </individualName>
+      <organizationName>Alaska Department of Fish and Game Division of Subsistence</organizationName>
+      <electronicMailAddress>david.koster@alaska.gov</electronicMailAddress>
+    </contact>
+    <methods>
+      <methodStep>
+        <description>
+          <section>
+            <title>Subsistence Salmon Harvest Data Collection Methods</title>
+            <para>Fishing permits and postseason household surveys are used to assess subsistence salmon harvests in the management areas in Alaska. Fishing permits vary by subdistrict and are returned to ADF&amp;G if not used. Household surveys are conducted by the Division of Commercial Fisheries in certain subdistricts after the end of the season. Postseason surveys are used to estimate subsistence salmon by species and community; compile information on harvest by gear types, participation rates, household size, use of salmon, and participation in customary barter and trade; as well as assess the quality of salmon fishing and what affected it.</para>
+            <para>For Kodiak fisheries, total permits issued are not available, because this fishery only tracks returns. As a result the assumption is that only returned permits were fished on. These are intentionally blank.</para>
+            <para>For Southeast, some of the older datasets do not have numbers for issued permits. These data were unable to be found/recovered and are left as blank. Some fisheries are listed as "Combined" permits, meaning that subsistence and personal use could not be distinguished for these permits.</para>
+            <para>For Cook Inlet, Chinapoot does not have issued or returned permit numbers available. The permit system in this fishery has been closed for 20 years now, and currently there is now way of recovering the permits issued/return values.</para>
+            <para>1996 Cook Inlet data are not currently available for personal use fisheries by community, but an overall total for 1996 has been added.</para>
+          </section>
+        </description>
+      </methodStep>
+    </methods>
+    <project>
+      <title>State of Alaska’s Salmon and People</title>
+      <personnel>
+        <individualName>
+          <givenName>Matt</givenName>
+          <surName>Jones</surName>
+        </individualName>
+        <organizationName>NCEAS/UCSB</organizationName>
+        <role>principalInvestigator</role>
+      </personnel>
+      <personnel>
+        <individualName>
+          <givenName>Ian</givenName>
+          <surName>Dutton</surName>
+        </individualName>
+        <organizationName>Nautilus Impact Investing</organizationName>
+        <role>principalInvestigator</role>
+      </personnel>
+      <personnel>
+        <individualName>
+          <givenName>Frank</givenName>
+          <surName>Davis</surName>
+        </individualName>
+        <organizationName>NCEAS/UCSB</organizationName>
+        <role>principalInvestigator</role>
+      </personnel>
+      <personnel>
+        <individualName>
+          <givenName>Jeanette</givenName>
+          <surName>Clark</surName>
+        </individualName>
+        <organizationName>NCEAS/UCSB</organizationName>
+        <role>dataCoordinator</role>
+      </personnel>
+      <personnel>
+        <individualName>
+          <givenName>Jared</givenName>
+          <surName>Kibele</surName>
+        </individualName>
+        <organizationName>NCEAS/UCSB</organizationName>
+        <role>programmer</role>
+      </personnel>
+      <abstract>
+        <para>State of Alaska’s Salmon and People (SASAP) and SASAP Data Task Force are both funded by the Gordon and Betty Moore Foundation. SASAP is a synthesis science project aimed to create an equitable decision-making platform for all stakeholders by addressing data gaps in Alaska’s salmon system through information synthesis, collaboration and stakeholder engagement. The SASAP Data Task Force assists the synthesis research effort through data collection, homogenization, management, and sustainability, under the direction of the synthesis project leads. The result of the efforts of these two projects is an Alaskan Salmon data catalog, containing all of the original and derived data products resulting from the synthesis research.</para>
+      </abstract>
+      <funding>
+        <para>State of Alaska’s Salmon and People (Gordon and Betty Moore Foundation Award 5124)</para>
+        <para>Data Task Forces for Better Synthesis Studies (Gordon and Betty Moore Foundation Award 5451)</para>
+      </funding>
+    </project>
+    <dataTable>
+      <entityName>Reformatted subsistence and personal use harvest data</entityName>
+      <physical scope="document">
+        <objectName>ASFDB_FullPermit.csv</objectName>
+        <size unit="bytes">17998122</size>
+        <authentication method="SHA1">b48a5bddf7420036e0771d474530b6e0f282c3fb</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>text/csv</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:43f82ba7-6c5c-4d9d-84f6-b4162537e043</url>
+          </online>
+        </distribution>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>area</attributeName>
+          <attributeDefinition>ADFG management area</attributeDefinition>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>ADFG management area</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>districtName</attributeName>
+          <attributeDefinition>ADFG management district</attributeDefinition>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>ADFG management district</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>fisheryName</attributeName>
+          <attributeDefinition>name of subsistence fishery where fish was harvested</attributeDefinition>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>name of subsistence fishery where fish was harvested</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>fishCode</attributeName>
+          <attributeDefinition>code corresponding to fisheryName</attributeDefinition>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>code corresponding to fisheryName</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>year</attributeName>
+          <attributeDefinition>year of harvest</attributeDefinition>
+          <measurementScale>
+            <dateTime>
+              <formatString>YYYY</formatString>
+            </dateTime>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>gearTypeID</attributeName>
+          <attributeDefinition>placeholder column for gear information, contains no real information</attributeDefinition>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>placeholder column for gear information, contains no real information</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>permitTypeName</attributeName>
+          <attributeDefinition>type of permit</attributeDefinition>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>type of permit</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>commname</attributeName>
+          <attributeDefinition>name of community of residence of the permit holder</attributeDefinition>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>name of community of residence of the permit holder</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>returned</attributeName>
+          <attributeDefinition>number of permits returned</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>number</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>whole</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>issued</attributeName>
+          <attributeDefinition>number of permits issued</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>number</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>whole</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>species</attributeName>
+          <attributeDefinition>species of harest</attributeDefinition>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>species of harest</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>amount</attributeName>
+          <attributeDefinition>total number of fish harvested</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>number</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>whole</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>mean</attributeName>
+          <attributeDefinition>mean amount of fish harvested per permit</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>number</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>pounds</attributeName>
+          <attributeDefinition>total number of pounds of fish harvested</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>pound</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>USGS_name</attributeName>
+          <attributeDefinition>name of USGS community used to obtain location information, typically very similar to commname</attributeDefinition>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>name of USGS community used to obtain location information, typically very similar to commname</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>lat</attributeName>
+          <attributeDefinition>latitude of community</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>lng</attributeName>
+          <attributeDefinition>longitude of community</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>region_id</attributeName>
+          <attributeDefinition>region identifier corresponding to region column</attributeDefinition>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>region identifier corresponding to region column</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>region</attributeName>
+          <attributeDefinition>name of SASAP region in which the community of residence of the permit holder lies</attributeDefinition>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>name of SASAP region in which the community of residence of the permit holder lies</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+      </attributeList>
+    </dataTable>
+    <dataTable>
+      <entityName>Subsistence_fisheries.csv</entityName>
+      <entityDescription>File contains information on fishery names and location of fisheries</entityDescription>
+      <physical id="urn:uuid:370651b2-2b5b-4b5f-a80a-a55d8f44421b">
+        <objectName>Subsistence_fisheries.csv</objectName>
+        <size unit="bytes">1706</size>
+        <authentication method="SHA-1">b7833f4db216af476c5b8561b71d838d79f68f62</authentication>
+        <dataFormat>
+          <textFormat>
+            <numHeaderLines>1</numHeaderLines>
+            <recordDelimiter>\r\n</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+        <distribution>
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:370651b2-2b5b-4b5f-a80a-a55d8f44421b</url>
+          </online>
+        </distribution>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>FisheryName</attributeName>
+          <attributeDefinition>Name of the subsistence or personal use fishery</attributeDefinition>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Name of fishery</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>SASAP.Region_Fish</attributeName>
+          <attributeDefinition>SASAP region where subsistence or personal use fishery is located</attributeDefinition>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>SASAP region where fishery is located</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+      </attributeList>
+    </dataTable>
+    <dataTable>
+      <entityName>Subsistence communities in Alaska</entityName>
+      <entityDescription>Subsistence communities in Alaska</entityDescription>
+      <physical scope="document">
+        <objectName>subcomms.csv</objectName>
+        <size unit="bytes">750</size>
+        <authentication method="SHA1">a8efbca4183ff7da2576a8c5440a5b380a174978</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>text/csv</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:7c1cbc97-6f72-4e05-8104-5ed5ec63c585</url>
+          </online>
+        </distribution>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>Community</attributeName>
+          <attributeDefinition>Name of subsistence community</attributeDefinition>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Name of subsistence community</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>lat</attributeName>
+          <attributeDefinition>Latitude where community is located</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>lng</attributeName>
+          <attributeDefinition>Longitude where community is located</attributeDefinition>
+          <measurementScale>
+            <interval>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+              </numericDomain>
+            </interval>
+          </measurementScale>
+        </attribute>
+        <attribute>
+          <attributeName>Location_Source</attributeName>
+          <attributeDefinition>Source where location information was obtained</attributeDefinition>
+          <measurementScale>
+            <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Source where location information was obtained</definition>
+                </textDomain>
+              </nonNumericDomain>
+            </nominal>
+          </measurementScale>
+        </attribute>
+      </attributeList>
+    </dataTable>
+    <otherEntity id="urn:uuid:dfaa43cf-4695-4560-bf04-0723b1f27e31" scope="document">
+      <entityName>ASFDB_Full_PermitTypeDetail.xlsx</entityName>
+      <physical scope="document">
+        <objectName>ASFDB_Full_PermitTypeDetail.xlsx</objectName>
+        <size unit="bytes">4583235</size>
+        <authentication method="SHA1">ee8aad620186f28a1126ade7757e59c73cd9c45a</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:dfaa43cf-4695-4560-bf04-0723b1f27e31</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
+    <otherEntity id="urn:uuid:e865d52f-95a8-4080-a7cc-9b217a197eb9" scope="document">
+      <entityName>subsistence_harvest_processing.Rmd</entityName>
+      <physical scope="document">
+        <objectName>subsistence_harvest_processing.Rmd</objectName>
+        <size unit="bytes">13504</size>
+        <authentication method="SHA1">c942e014e7b041ad329ce3b663d1e624ad22f24b</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>application/octet-stream</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:e865d52f-95a8-4080-a7cc-9b217a197eb9</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
+  </dataset>
+</eml:eml>

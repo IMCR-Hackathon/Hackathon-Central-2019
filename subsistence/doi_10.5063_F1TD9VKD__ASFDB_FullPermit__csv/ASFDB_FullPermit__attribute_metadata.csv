@@ -1,0 +1,20 @@
+attributeName,attributeDefinition,definition,measurementScale,domain,formatString,unit,numberType,metadata_pid
+area,ADFG management area,ADFG management area,nominal,textDomain,NA,NA,NA,doi:10.5063/F1TD9VKD
+districtName,ADFG management district,ADFG management district,nominal,textDomain,NA,NA,NA,doi:10.5063/F1TD9VKD
+fisheryName,name of subsistence fishery where fish was harvested,name of subsistence fishery where fish was harvested,nominal,textDomain,NA,NA,NA,doi:10.5063/F1TD9VKD
+fishCode,code corresponding to fisheryName,code corresponding to fisheryName,nominal,textDomain,NA,NA,NA,doi:10.5063/F1TD9VKD
+year,year of harvest,NA,dateTime,dateTimeDomain,YYYY,NA,NA,doi:10.5063/F1TD9VKD
+gearTypeID,"placeholder column for gear information, contains no real information","placeholder column for gear information, contains no real information",nominal,textDomain,NA,NA,NA,doi:10.5063/F1TD9VKD
+permitTypeName,type of permit,type of permit,nominal,textDomain,NA,NA,NA,doi:10.5063/F1TD9VKD
+commname,name of community of residence of the permit holder,name of community of residence of the permit holder,nominal,textDomain,NA,NA,NA,doi:10.5063/F1TD9VKD
+returned,number of permits returned,NA,interval,numericDomain,NA,number,whole,doi:10.5063/F1TD9VKD
+issued,number of permits issued,NA,interval,numericDomain,NA,number,whole,doi:10.5063/F1TD9VKD
+species,species of harest,species of harest,nominal,textDomain,NA,NA,NA,doi:10.5063/F1TD9VKD
+amount,total number of fish harvested,NA,interval,numericDomain,NA,number,whole,doi:10.5063/F1TD9VKD
+mean,mean amount of fish harvested per permit,NA,interval,numericDomain,NA,number,real,doi:10.5063/F1TD9VKD
+pounds,total number of pounds of fish harvested,NA,interval,numericDomain,NA,pound,real,doi:10.5063/F1TD9VKD
+USGS_name,"name of USGS community used to obtain location information, typically very similar to commname","name of USGS community used to obtain location information, typically very similar to commname",nominal,textDomain,NA,NA,NA,doi:10.5063/F1TD9VKD
+lat,latitude of community,NA,interval,numericDomain,NA,degree,real,doi:10.5063/F1TD9VKD
+lng,longitude of community,NA,interval,numericDomain,NA,degree,real,doi:10.5063/F1TD9VKD
+region_id,region identifier corresponding to region column,region identifier corresponding to region column,nominal,textDomain,NA,NA,NA,doi:10.5063/F1TD9VKD
+region,name of SASAP region in which the community of residence of the permit holder lies,name of SASAP region in which the community of residence of the permit holder lies,nominal,textDomain,NA,NA,NA,doi:10.5063/F1TD9VKD
