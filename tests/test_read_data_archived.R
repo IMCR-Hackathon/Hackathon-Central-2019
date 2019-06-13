@@ -30,14 +30,26 @@ data.pkg.doi <- 'doi:10.6073/pasta/451553a669950425a96450f23bd09e07'
 # Clean data table with code generation also
 data.pkg.doi <- 'doi:10.6073/pasta/3c10627e2344d74141b45e70a9144ccb'
 
-#
-#
-data.pkg.doi <- ''
+# vanderbi
+# Typical dataset
+data.pkg.doi <- 'doi:10.6073/pasta/c964ed49ff284dfcaaf53719651da60f'
 
-#
-#
-data.pkg.doi <- ''
+# alesiahallmark
+# Flux tower data (fun because of the high temporal frequency):
+data.pkg.doi <- 'doi:10.6073/pasta/74d30fdbb17e0f76b54548ce74bf27e4'
 
-#
-#
-data.pkg.doi <- ''
+# atn38
+# Subsistence and personal use harvest of salmon in Alaska, 1960-2012
+data.pkg.doi <- 'doi:10.5063/F18P5XTN'
+
+# lkuiucsb
+# Three data tables, long time series, multiple measurements
+data.pkg.doi <- 'doi:10.6073/pasta/be54fff488ec4d0d6146956b5fff057e'
+
+# ktoddbrown
+# And here is a problematic dataset - too many columns, lots of missing data, some range and unit issues.
+data.pkg.doi <- 'doi:10.6073/pasta/b650b236f092e0fdee0d5d8ccf521cb3'
+
+# ktoddbrown
+# Typical dataset :
+data.pkg.doi <- 'doi:10.6073/pasta/c964ed49ff284dfcaaf53719651da60f'
