@@ -16,7 +16,8 @@ knitr::opts_chunk$set(echo = TRUE)
 # READ IN THE DATA AND FUNCTIONS
 githubrepo_path<-"~/Documents/Code/Hackathon-Central-2019/R"
 #source(paste(githubrepo_path,"knb-lter-hfr.292.2.r",sep="/"))
-source(paste(githubrepo_path,"knb-lter-arc.1607.10.R",sep="/"))
+#source(paste(githubrepo_path,"knb-lter-arc.1607.10.R",sep="/"))
+source(paste(githubrepo_path,"knb-lter-vcr.153.24.tidyr",sep="/"))
 source(paste(githubrepo_path,"Jporter.r",sep="/"))
 source(paste(githubrepo_path,"Jocelyn_functions_only.R",sep="/"))
 source(paste(githubrepo_path,"AJ_functions.R",sep="/"))
@@ -30,14 +31,16 @@ library(knitr)
 
 df<-as.data.frame(dt1)
 
+#df$DATE <- as.Date(df$DATE, "%d-%b-%y")
+
 dt2 <- HackathonFunction1(df)
 rownames(dt2) <- dt2$column_name
 # once on each data frame
 # pandoc.table(HackathonFunction1(df),split.cells=10)
 # pandoc.table(HackathonFunction2(df),split.cells=10)
 print(as.data.frame(dt2))
-#print(HackathonFunction1(df),n=1e4)
-print(HackathonFunction2(df),n=1e4)
+#print(HackathonFunction1(df),n=1e3)
+print(HackathonFunction2(df),n=1e3)
 # intitial spatial stuff goes here  - id coordinates
 ```
 
@@ -70,7 +73,8 @@ for(varname in names(df)){
     xsummary <- make_time_variable_summary_df(var)
     print(kable(xsummary,format="pandoc"))
     x<-freqclocks_forDates(df,var,varname)
-    print(x)
+    print(x[1])
+    print(x[2])
   }
   if (is.POSIXt(var)) {
     print(varname[1])
