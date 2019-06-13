@@ -35,6 +35,7 @@ read_data_archived <- function(data.pkg.doi, download.dir = NULL){
   }
   
   download.dir <- paste0(download.dir, '/data_package')
+  
   dir.create(download.dir)
   
   # Download data and metadata to directory -----------------------------------
@@ -88,5 +89,3 @@ read_data_archived <- function(data.pkg.doi, download.dir = NULL){
   input
   
 }
-
-
