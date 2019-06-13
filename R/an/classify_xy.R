@@ -1,8 +1,8 @@
 #'
 #' Detect spatial information in data columns
 #'
-#' @param list
-#' @param x_or_y
+#' @param list A metajam list output for a single data entity
+#' @param x_or_y "x" or "y", dimension to look for
 #'
 #' @return A logical vector
 #'

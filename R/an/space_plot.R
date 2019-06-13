@@ -6,7 +6,7 @@
 #' @param space_cols A character vector whose two elements are named "lat_col" and "lon_col". Outpur from \code{\link{space_detective}}
 #' @param var Name of variable to make data availability and summary. Remember to enclose in quotes. 
 #' 
-#' @return For all variables, function returns a data availability plot over the study area. For 
+#' @return For all variables, function returns a data availability plot over the study area. For categorical column types, function returns an extra plot showing most prevalent level of that variable in each spatial grid cell over the study area. For numeric column types, function returns an extra plot showing mean of that variable in each spatial grid cell over the study area. Lat and lon are binned; there are 50 bins normalized to attempt to enforce equal scales along each dimension.
 
 space_plot <- function (space_cols = space_cols, var) {
   

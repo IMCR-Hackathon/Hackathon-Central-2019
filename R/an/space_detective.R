@@ -1,9 +1,11 @@
 #'
 #' the space detective
+#' 
+#' Wrapper for \code{\link{classify_xy}}. Runs \code{\link{classify_xy}}, counts number of hits in each dimension, then decides what to depending on those two numbers. 
 #'
 #' @param list Metajam output for a single data entity
 #' 
-#' @return A two-element numeric vector indicating the names of columns containing lat and lon information respectively, or an error message
+#' @return A character vector whose two elements are named "lat_col" and "lon_col", indicating the names of columns containing lat and lon information respectively, or an error message if not detected or if we aren't equipped to deal with the number of hits we got. 
 #'
 
 space_detective <- function(list) {
@@ -46,13 +48,13 @@ space_detective <- function(list) {
       
       # equal hits and larger than 1
       
-      message("Space detective found equal and larger than 1 numbers of x and y columns. What to do with this information pending... Meanwhile, spatial plots will not be generated.")
+      message("Space detective found equal and larger than 1 numbers of x and y columns. What to do with this information pending. Meanwhile, spatial plots will not be generated.")
       
       }
   } else {
     
     # unequal number of hits
     
-    message("Space detective found unequal numbers of x and y columns. What to do with this information pending... Meanwhile, spatial plots will not be generated.")
+    message("Space detective found unequal numbers of x and y columns. What to do with this information pending. Meanwhile, spatial plots will not be generated.")
     }
 }
