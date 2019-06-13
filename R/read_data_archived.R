@@ -14,14 +14,28 @@
 #   recursive = TRUE,
 #   force = TRUE
 # )
+#
+# Arguments:
+# data.pkg.doi - The data package DOI
+# download.dir - The directory to download the data objects to. Default is 
+# paste0(tempdir(), '/data_package')
 
-read_data_archived <- function(data.pkg.doi){
+read_data_archived <- function(data.pkg.doi, download.dir = NULL){
   
   # Create directory for data and metadata ------------------------------------
   
   message('Creating data package directory')
   
-  dir.create(paste0(tempdir(), '/data_package'))
+  if (is.null(download.dir)){
+    download.dir <- tempdir()
+  }
+  
+  if (!dir.exists(download.dir)){
+    stop('Download directory does not exist.')
+  }
+  
+  download.dir <- paste0(download.dir, '/data_package')
+  dir.create(download.dir)
   
   # Download data and metadata to directory -----------------------------------
   
@@ -30,7 +44,7 @@ read_data_archived <- function(data.pkg.doi){
   pkg_dir_name <- suppressMessages(
     metajam::download_d1_data_pkg(
       meta_obj = data.pkg.doi,
-      path = paste0(tempdir(), '/data_package')
+      path = download.dir
     )
   )
   
