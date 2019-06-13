@@ -77,12 +77,11 @@ make_missing_plot<-function(var){
   is_missing_df<-data.frame(obs_number,is_missing,allones)
   x<-ggplot(is_missing_df,aes(obs_number,allones,fill=is_missing))+geom_col(width=1)+
     theme(axis.text.y=element_blank(),
-          axis.ticks.y=element_blank())+
+          axis.ticks.y=element_blank(),
+          panel.background = element_blank())+
     ylab("")+
     scale_fill_manual("legend", values = c("Missing" = "black", "Valid" = "lightgreen"))
-#    scale_x_continuous(breaks=c(0, round(length(var)*0.2),round(length(var)*0.4),round(length(var)*0.6),round(length(var)*0.8),length(var)))
   return(x)
 }
 
-detach(df)
-}
+
