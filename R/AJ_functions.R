@@ -1,6 +1,17 @@
 ### This file contains a list of functions that Alesia wrote
 ### These functions are meant to summarize time (POSIX, Date) objects in a data.frame
 
+# libraries that are used in these functions
+library(lubridate)
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(stringr)
+library(cowplot)
+library(scales)
+library(readr)
+
+
 ## make_vector_of_POSIX_variable_names
 # this function makes a list of POSIX class columns in a data.frame
 make_vector_of_POSIX_variable_names<-function(df){
