@@ -1,0 +1,49 @@
+---
+title: "Test Var Report"
+author: "John Porter"
+date: "June 12, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("C:/users/john/downloads/ingestdata.r")
+source("D:/Work/Work/GitHubRepo/R/jporter.r")
+```
+
+## Variable Report
+
+
+```{r make_report1, echo=F,warning=F,message=FALSE, fig.height=2,fig.width=6}
+# make_var_report(dt1)
+```
+```{r make_report2, echo=F,warning=F,message=F, fig.height=2,fig.width=6}
+library(knitr)
+df<-dt1
+attach(df)
+for(varname in names(df)){
+  var<-get(varname)
+  if (is.numeric(var)){
+     print(varname[1])
+     xsummary<-make_numeric_variable_summary_df(var)
+     print(kable(xsummary,format="pandoc"))
+     x<-make_numeric_histogram(df,var,varname)
+     print(x)
+  }
+  if(is.factor(var) | is_character(var)){
+    print(varname[1])
+    xsummary<-make_cat_variable_summary_df(var)
+    print(kable(xsummary,format="pandoc"))
+    x<-make_categorical_histogram(df,var,varname)
+    print(x)
+  }
+  if(sum(xsummary$num_missing) > 0){
+    print("View where missing values occur in the data")
+    x<-make_missing_plot(var)
+    print(x)
+    
+  }
+}
+
+detach(df)
+```
