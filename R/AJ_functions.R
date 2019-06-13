@@ -1,7 +1,7 @@
 ### This file contains a list of functions that Alesia wrote
 ### These functions are meant to summarize time (POSIX, Date) objects in a data.frame
 
-## make_vector_of_Date_variable_names
+## make_vector_of_POSIX_variable_names
 # this function makes a list of POSIX class columns in a data.frame
 make_vector_of_POSIX_variable_names<-function(df){
   POSIX_var_name_vector<-c("")
@@ -17,7 +17,7 @@ make_vector_of_POSIX_variable_names<-function(df){
   return(POSIX_var_name_vector)
 }
 
-## make_vector_of_POSIX_variable_names
+## make_vector_of_Date_variable_names
 # this function makes a list of POSIX class columns in a data.frame
 make_vector_of_Date_variable_names<-function(df){
   Date_var_name_vector<-c("")
@@ -49,22 +49,22 @@ make_time_variable_summary_df<-function(var){
 }
 
 ## freqclocks
-# this function creates ggplot clocks of the frequency of data occurring at different time frequencies, if POSIX type data
+# this function creates ggplot clocks of the frequency of data occurring at different time frequencies, if Date type data
 freqclocks_forDates <- function(df,var,varname) {
   na.df <- as.data.frame(!is.na(df))
   na.df[,varname] <- df[,varname]
   long.df <- gather(na.df, key = column.name, value = count, -varname)
   
-  freq.timeline <- ggplot(long.df, aes(x = long.df[,1], group = column.name)) + 
+  freq.timeline <- ggplot(long.df[long.df$count %in% TRUE,], aes(x = long.df[long.df$count %in% TRUE,1], group = column.name)) + 
     theme_bw() +
     geom_freqpoly(aes(colour = column.name), bins = 100) + 
-    ylab("Data Frequency") + xlab("Time")  +
+    ylab("Data Coverage") + xlab("Time")  +
     guides(colour = guide_legend("Column Names")) +
     theme(legend.position = "top") + 
     scale_x_date(labels=date_format("%b-%Y"))
   
   # plot how much data occurs in each month of the year
-  month.clock <- ggplot(long.df, aes(x = months(long.df[,1], T), group = column.name)) + 
+  month.clock <- ggplot(long.df[long.df$count %in% TRUE,], aes(x = months(long.df[long.df$count %in% TRUE,1], T), group = column.name)) + 
     theme_bw() +
     geom_histogram(stat = "count", aes(fill = column.name)) + 
     coord_polar() + xlim(month.abb) +
@@ -85,16 +85,16 @@ freqclocks_forPOSIX <- function(df,var,varname) {
   na.df[,varname] <- df[,varname]
   long.df <- gather(na.df, key = column.name, value = count, -varname)
   
-  freq.timeline <- ggplot(long.df, aes(x = long.df[,1], group = column.name)) + 
+  freq.timeline <- ggplot(long.df[long.df$count %in% TRUE,], aes(x = long.df[long.df$count %in% TRUE,1], group = column.name)) + 
     theme_bw() +
     geom_freqpoly(aes(colour = column.name), bins = 100) + 
-    ylab("Data Frequency") + xlab("Time")  +
+    ylab("Data Coverage") + xlab("Time")  +
     guides(colour = guide_legend("Column Names")) +
     theme(legend.position = "top") + 
-    scale_x_datetime(labels=date_format("%b-%Y")))
+    scale_x_datetime(labels=date_format("%b-%Y"))
   
   # plot how much data occus in each hour of the day
-  hour.clock <- ggplot(long.df, aes(x = hour(long.df[,1]), group = column.name)) + 
+  hour.clock <- ggplot(long.df[long.df$count %in% TRUE,], aes(x = hour(long.df[long.df$count %in% TRUE,1]), group = column.name)) + 
     theme_bw() +
     geom_histogram(bins = 24, aes(fill = column.name)) + 
     coord_polar() +
@@ -103,7 +103,7 @@ freqclocks_forPOSIX <- function(df,var,varname) {
     theme(legend.position = "none")
   
   # plot how much data occurs in each month of the year
-  month.clock <- ggplot(long.df, aes(x = months(long.df[,1], T), group = column.name)) + 
+  month.clock <- ggplot(long.df[long.df$count %in% TRUE,], aes(x = months(long.df[long.df$count %in% TRUE,1], T), group = column.name)) + 
     theme_bw() +
     geom_histogram(stat = "count", aes(fill = column.name)) + 
     coord_polar() + xlim(month.abb) +
@@ -119,9 +119,34 @@ freqclocks_forPOSIX <- function(df,var,varname) {
 }
 
 
-df <- dt1
-varname <- "DATE"
-var <- df[,"DATE"]
+# this function takes character-class columns and attempts to coerce them into Date-class, if reasonable    
+# test whether a column conforms to standard date formats
+
+time.detector <- function(df, varname) {
+  
+  var <- unique(df[,varname])
+  
+  date.formats <- c("%d%b%Y", "%d%.%m%.%Y", "%m%.%d%.%Y", "%d%.%m%.%y", "%m%.%d%.%y", "%d%.%b%.%Y", "%b%.%d%.%Y", "%Y%.%m%.%d", "%Y%.%d%.%m", "%y%.%m%.%d", "%b %d, %Y")
+  
+  attempted.date.col <- data.frame(matrix(NA, nrow = length(var), ncol = length(date.formats)), row.names = as.character(var))
+  colnames(attempted.date.col) <- date.formats
+  
+  formatted.date.col <- NA
+  
+  if(is.factor(var)) var <- as.character(var)
+  
+  if(is.character(var) && str_length(var) > 6) {
+    
+    for(i in 1:length(date.formats)) {
+      attempted.date.col[,i] <- ifelse(is.na(parse_date(var, date.formats[i])), NA, 1)
+    }
+    best.date.col <- max(colSums(attempted.date.col), na.rm = T)
+    if(!is.infinite(best.date.col)) {
+      formatted.date.col <- parse_date(df[,varname], date.formats[colSums(attempted.date.col) %in% best.date.col])
+    }
+  }
+  return(formatted.date.col)
+}
 
 
-dt1$DATE <- as.Date(dt1$DATE, "%d%b%Y")
+

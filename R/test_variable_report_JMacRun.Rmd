@@ -1,0 +1,71 @@
+---
+title: "Test Var Report"
+author: "EDI Hackathon"
+date: "June 12, 2019"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# READ IN THE DATA AND FUNCTIONS
+source("/Users/Jocelyn/Documents/GitHub/Hackathon-Central-2019/R/knb-lter-hfr.292.2.r")
+source("/Users/Jocelyn/Documents/GitHub/Hackathon-Central-2019/R/Jporter.r")
+source("/Users/Jocelyn/Documents/GitHub/Hackathon-Central-2019/R/Jocelyn_functions_only.R")
+```
+
+## Data Table Report 
+
+
+```{r make_report1, echo=F,warning=F,message=F, fig.height=2,fig.width=6}
+library(knitr)
+library(pander)
+
+df<-as.data.frame(dt1)
+dt2 <- HackathonFunction1(df)
+rownames(dt2) <- dt2$column_name
+# once on each data frame
+# pandoc.table(HackathonFunction1(df),split.cells=10)
+# pandoc.table(HackathonFunction2(df),split.cells=10)
+print(as.data.frame(dt2))
+#print(HackathonFunction1(df),n=1e4)
+print(HackathonFunction2(df),n=1e4)
+# intitial spatial stuff goes here  - id coordinates
+```
+
+## Variable Report
+```{r make_report2, echo=F,warning=F,message=F, fig.height=2,fig.width=6}
+attach(df)
+for(varname in names(df)){
+  var<-get(varname)
+  if (is.numeric(var)){
+     print(varname[1])
+     xsummary<-make_numeric_variable_summary_df(var)
+     print(kable(xsummary))
+     #pander(xsummary)
+     x<-make_numeric_histogram(df,var,varname)
+     print(x)
+  }
+  if(is.factor(var) | is_character(var)){
+    print(varname[1])
+    xsummary<-make_cat_variable_summary_df(var)
+    print(kable(xsummary,format="pandoc"))
+    #pander(xsummary)
+    x<-make_categorical_histogram(df,var,varname)
+    print(x)
+  }
+  if(sum(xsummary$num_missing) > 0){
+    print("View where missing values occur in the data")
+    x<-make_missing_plot(var)
+    print(x)
+  }
+  # spatial heatmap function for variable
+}
+
+detach(df)
+```
