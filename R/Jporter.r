@@ -73,12 +73,23 @@ make_missing_plot<-function(var){
   library(ggplot2)
   is_missing<-ifelse(is.na(var),0,1)
   obs_number<-rownames(as.data.frame(is_missing))
-  is_missing_df<-data.frame(obs_number,is_missing)
-  x<-ggplot(is_missing_df,aes(obs_number,is_missing))+geom_col()+
+  allones=1
+  is_missing_df<-data.frame(obs_number,is_missing,allones)
+  x<-ggplot(is_missing_df,aes(obs_number,allones,fill=is_missing))+geom_col()+
   theme(axis.text.x=element_blank(),
-         axis.ticks.x=element_blank())+ylab("Blank is Missing")
+         axis.ticks.x=element_blank())+ylab("Red is Missing")
   return(x)
-  }
+}
+# make_missing_plot<-function(var){
+#   library(ggplot2)
+#   is_missing<-ifelse(is.na(var),0,1)
+#   obs_number<-rownames(as.data.frame(is_missing))
+#   is_missing_df<-data.frame(obs_number,is_missing)
+#   x<-ggplot(is_missing_df,aes(obs_number,is_missing))+geom_col()+
+#     theme(axis.text.x=element_blank(),
+#           axis.ticks.x=element_blank())+ylab("Blank is Missing")
+#   return(x)
+# }
 
 make_var_report<-function(df){
   library(knitr)
