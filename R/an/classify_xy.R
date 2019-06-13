@@ -13,17 +13,15 @@ classify_xy <- function(list, x_or_y) {
   
   if (x_or_y == "x") {
     name_matches <- paste(c("lon", "lng", "*x", "x$"), collapse = "|")
-    range_cond <- min(column) >= -180 & max(column) <= 180
   } else if (x_or_y == "y") {
     name_matches <- paste(c("lat", "*y", "y$"), collapse = "|")
-    range_cond <- min(column) >= -90 & max(column) <= 90
   } else {
     stop("Please specify either x or y as criteria to classify columns.")
   }
   
   # use metadata if it exists
   
-  if (exists(list[["attribute_metadata"]])) {
+  if ("attribute_metadata" %in% names(list)) {
     unit_matches <- paste(c("deg", "min", "sec"), collapse = "|")
     scale_matches <-
       paste(c("int", "ord", "rat"), collapse = "|")
@@ -60,10 +58,18 @@ classify_xy <- function(list, x_or_y) {
       name_cond <-
         grepl(name_matches, colnames(column))
       type_cond <- is.numeric(column)
+      range_cond_x <- min(column) >= -180 & max(column) <= 180
+      range_cond_y <- min(column) >= -90 & max(column) <= 90
       
       if (name_cond & type_cond) {
-        if (range_cond) {
-          return(T)
+        if (x_or_y == "x") {
+          if (range_cond_x) {
+            return(T)
+          }
+        } else if (x_or_y == "y") {
+          if (range_cond_y) {
+            return(T)
+          }
         }
       } else {
         return(F)

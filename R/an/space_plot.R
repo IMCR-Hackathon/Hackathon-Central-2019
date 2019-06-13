@@ -1,10 +1,18 @@
-space_plot <- function (list, var) {
+#'
+#' the Space plot
+#' 
+#' Create variable specific spatial heatmaps to show data availability and data summary over the geographical study area. 
+#' 
+#' @param space_cols A character vector whose two elements are named "lat_col" and "lon_col". Outpur from \code{\link{space_detective}}
+#' @param var Name of variable to make data availability and summary. Remember to enclose in quotes. 
+#' 
+#' @return For all variables, function returns a data availability plot over the study area. For 
+
+space_plot <- function (space_cols = space_cols, var) {
   
-  detected <- space_detective(list)
-  
-  if (is.vector(detected) & length(detected) == 2) {
-    x_col <- list[["data"]][[detected[["lon_col"]]]]
-    y_col <- list[["data"]][[detected[["lat_col"]]]]
+  if (is.vector(space_cols) & length(space_cols) == 2) {
+    x_col <- list[["data"]][[space_cols[["lon_col"]]]]
+    y_col <- list[["data"]][[space_cols[["lat_col"]]]]
     
     xrange <-
       max(x_col, na.rm = T) - min(x_col, na.rm = T)
