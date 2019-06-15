@@ -71,7 +71,7 @@ freqclocks_forDates <- function(df,var,varname) {
     geom_freqpoly(aes(colour = column.name), bins = 100) + 
     ylab("Data Coverage") + xlab("Time")  +
     guides(colour = guide_legend("Column Names")) +
-    theme(legend.position = "top") + 
+    #theme(legend.position = "top") + 
     scale_x_date(labels=date_format("%b-%Y"))
   
   # plot how much data occurs in each month of the year
@@ -85,7 +85,7 @@ freqclocks_forDates <- function(df,var,varname) {
   
   Date.plots <- plot_grid(freq.timeline, month.clock,
                            ncol=1, align = "v", rel_widths = c(3,1))
-  return(Date.plots)
+  return(list(freq.timeline, month.clock))
 }
 
 
@@ -133,31 +133,43 @@ freqclocks_forPOSIX <- function(df,var,varname) {
 # this function takes character-class columns and attempts to coerce them into Date-class, if reasonable    
 # test whether a column conforms to standard date formats
 
-time.detector <- function(df, varname) {
+# if data table does not have a formatted date column, scan each character column and test whether any of them can be coerced to a date
+
+
+
+
+time.detector <- function(df) {
   
-  var <- unique(df[,varname])
-  
-  date.formats <- c("%d%b%Y", "%d%.%m%.%Y", "%m%.%d%.%Y", "%d%.%m%.%y", "%m%.%d%.%y", "%d%.%b%.%Y", "%b%.%d%.%Y", "%Y%.%m%.%d", "%Y%.%d%.%m", "%y%.%m%.%d", "%b %d, %Y")
-  
-  attempted.date.col <- data.frame(matrix(NA, nrow = length(var), ncol = length(date.formats)), row.names = as.character(var))
-  colnames(attempted.date.col) <- date.formats
-  
-  formatted.date.col <- NA
-  
-  if(is.factor(var)) var <- as.character(var)
-  
-  if(is.character(var) && str_length(var) > 6) {
-    
-    for(i in 1:length(date.formats)) {
-      attempted.date.col[,i] <- ifelse(is.na(parse_date(var, date.formats[i])), NA, 1)
-    }
-    best.date.col <- max(colSums(attempted.date.col), na.rm = T)
-    if(!is.infinite(best.date.col)) {
-      formatted.date.col <- parse_date(df[,varname], date.formats[colSums(attempted.date.col) %in% best.date.col])
+  if(all(!as.vector(t(as.data.frame(sapply(df, class))[,1])) %in% c("Date", "POSIXc", "POSIXlt", "POSIXct"))) {
+    for(i in 1:dim(df)[2]) {
+      if(is.character(df[,i]) | is.factor(df[,i])) {
+        
+        var <- as.character(unique(df[,i]))
+        formatted.date.col <- NA
+        
+        date.formats <- c("%d%b%Y", "%d%.%m%.%Y", "%m%.%d%.%Y", "%d%.%m%.%y", "%m%.%d%.%y", "%d%.%b%.%Y", "%b%.%d%.%Y", "%Y%.%m%.%d", "%Y%.%d%.%m", "%y%.%m%.%d", "%b %d, %Y")
+        
+        date.tests <- data.frame(matrix(NA, nrow = length(var), ncol = length(date.formats)), row.names = as.character(var))
+        colnames(date.tests) <- date.formats
+        
+        date.tests2 <- as.data.frame(
+          lapply(as.list(date.formats), function(x){
+          ifelse(is.na(parse_date(var, x)), NA, 1)
+        }))
+        names(date.tests2) <- date.formats
+        
+        max.dates.coerced <- max(colSums(date.tests2), na.rm = T)
+        coerced.date <- NA
+        
+        if(!is.infinite(max.dates.coerced)) {
+          coerced.date <- parse_date(df[,i], date.formats[colSums(date.tests2) %in% max.dates.coerced])
+        }
+        
+        df$coerced.date <- coerced.date
+        
+      } else {next}
     }
   }
-  return(formatted.date.col)
+  return(df)
 }
-
-
 
