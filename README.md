@@ -5,4 +5,4 @@ Command center for hackathon participants to [share ideas](https://github.com/IM
 ### Repository contents
 * __[images](https://github.com/IMCR-Hackathon/Hackathon-Central-2019/tree/master/pictures)__ - A directory for hackathon pictures, diagrams, and other images
 * __[R](https://github.com/IMCR-Hackathon/Hackathon-Central-2019/tree/master/R)__ - A directory of R scripts supporting the data visualization project
-* __[tests](https://github.com/IMCR-Hackathon/Hackathon-Central-2019/tree/master/tests) A directory for unit tests following the `testthat` methodology.
+* __[tests](https://github.com/IMCR-Hackathon/Hackathon-Central-2019/tree/master/tests)__ A directory for unit tests following the `testthat` methodology.
